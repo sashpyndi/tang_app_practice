@@ -13,10 +13,19 @@ app = Flask(__name__)     # create an app
 @app.route('/index')
 def index():
     a_user = {'name': 'Sashank', 'email': 'spyndi@uncc.edu'}
-    tasks = {1:{'title': 'First note', 'text': 'This is my first note', 'date': '10-1-2020'}, 2: {'title': 'Second note', 'text': 
-    'This is my second note','date': '10-2-2020'}}
-    return render_template('dashboard.html', user = a_user, tasks=tasks)
+    tasks = {1:{'title': 'Create Task', 'description': 'User has to create task'}, 2: {'title': 'Edit task', 'description': 
+    'User has to edit task'}}
+    return render_template('dashboard.html', user=a_user, tasks=tasks)
+@app.route('/index/<task_id>')
+def viewTask(task_id):
+    a_user = {'name': 'Sashank', 'email': 'spyndi@uncc.edu'}
+    tasks = {1:{'title': 'First note', 'description': 'This is my first note'}, 2: {'title': 'Second note', 'description': 
+    'This is my second note'}}
+    return render_template('task.html', user=a_user,task=tasks[int(task_id)])
+
 app.run(host=os.getenv('IP', '127.0.0.1'),port=int(os.getenv('PORT', 5000)),debug=True)
+
+
 
 # To see the web page in your web browser, go to the url,
 #   http://127.0.0.1:5000
