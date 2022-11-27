@@ -67,19 +67,20 @@
         <br>
         <br>
         <main>
-          <div class = "w3-container">
-            <table class = "w3-table">
-              <tr>
-                 <th>Title</th>
-                 <th>Description</th>
-                 <th>Status</th>
-             </tr>
-             <tr>
-                <td>{{task.title}}</td>
-                <td>{{task.description}}</td>
-                <td>{{task.status}}</td>
-             </tr>
-            </table>
+          <form class="w3-container">
+           <label>Title</label> 
+           <input class = "w3-input" type = "text" placeholder = "Enter a title">
+           <label>Description</label> 
+           <input class = "w3-input" type = "text" placeholder = "Enter your description">
+           <input class="w3-radio" type="radio" name="category" value="backlog">
+           <label>Backlog</label>
+           <input class="w3-radio" type="radio" name="category" value="backlog">
+           <label>Doing</label>
+           <input class="w3-radio" type="radio" name="category" value="done">
+           <label>Done</label>
+           <button>Add Note</button>
+          </form>
+          
         </main>
          <!-- Footer -->
          <footer id="footer" class="w3-black w3-center w3-padding-24 subdiv">

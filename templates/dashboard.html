@@ -18,15 +18,16 @@
         h6 {
             font-family: "Raleway", sans-serif
         }
-        .subdiv{
-            margin-left:-400px;
+
+        .subdiv {
+            margin-left: -400px;
             margin-top: 330px;
         }
-        .division{
-            margin-left:900px;
+
+        .division {
+            margin-left: 900px;
             margin-top: -60px;
         }
-        
     </style>
 </head>
 
@@ -35,22 +36,22 @@
     <!-- Sidebar/menu -->
     <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
         <div class="w3-container">
-           
+
             <h4><b>TANG</b></h4>
-            
+
         </div>
         <div class="w3-bar-block">
             <a href="" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i
                     class="fa fa-th-large fa-fw w3-margin-right"></i>Home</a>
             <a href="" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i
                     class="fa fa-user fa-fw w3-margin-right"></i>Project Board</a>
-            <a href="" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i
+            <a href="{{url_for('createTask')}}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i
                     class="fa fa-envelope fa-fw w3-margin-right"></i>Add Task</a>
         </div>
     </nav>
 
     <!-- Overlay effect when opening sidebar on small screens -->
-   
+
 
     <!-- !PAGE CONTENT! -->
     <div class="w3-main" style="margin-left:300px">
@@ -64,56 +65,49 @@
             <div class="w3-container">
                 <h1><b>Project Board</b></h1>
             </div>
-            <div class = "division">
-            <h4>Welcome {{user.name}}</h4>
-        </div>
-         
+            <div class="division">
+                <h4>Welcome {{user.name}}</h4>
+            </div>
         </header>
         <br>
         <br>
         <br>
-        <div class="w3-container w3-padding-large" style="margin-bottom:32px">
+        <main>
+            <div class="w3-container w3-padding-large" style="margin-bottom:32px">
+                <!-- Pricing Tables -->
+                <div class="w3-row-padding" style="margin:0 -16px">
+                    <div class="w3-third w3-margin-bottom">
+                        <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
+                            <li class="w3-black w3-xlarge w3-padding-32">BACKLOG</li>
+                            {% for key, value in tasks.items() %}
+                            <li class="w3-padding-16"><a href = "{{url_for('viewTask', task_id=key)}}">{{value.title}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
 
-            <!-- Pricing Tables -->
-            <div class="w3-row-padding" style="margin:0 -16px">
-                <div class="w3-third w3-margin-bottom">
-                    <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
-                        <li class="w3-black w3-xlarge w3-padding-32">BACKLOG</li>
-                        {% for key, value in tasks.items() %}
-                         <li class ="w3-padding-16">{{value.title}}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
+                    <div class="w3-third w3-margin-bottom">
+                        <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
+                            <li class="w3-teal w3-xlarge w3-padding-32">DOING</li>
+                        </ul>
+                    </div>
 
-                <div class="w3-third w3-margin-bottom">
-                    <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
-                        <li class="w3-teal w3-xlarge w3-padding-32">DOING</li>
-                        {% for key, value in tasks.items() %}
-                           <li class ="w3-padding-16">{{value.title}}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-
-                <div class="w3-third">
-                    <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
-                        <li class="w3-black w3-xlarge w3-padding-32">DONE</li>
-                        {% for key, value in tasks.items() %}
-                           <li class ="w3-padding-16">{{value.title}}</li>
-                        {% endfor %}
-                        
-                    </ul>
+                    <div class="w3-third">
+                        <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
+                            <li class="w3-black w3-xlarge w3-padding-32">DONE</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+        </main>
         <br><br><br><br><br><br>
-       
+
 
         <!-- Footer -->
-        <footer id= "footer" class="w3-black w3-center w3-padding-24 subdiv">
-             <h3> Powered by TANG</h3>
+        <footer id="footer" class="w3-black w3-center w3-padding-24 subdiv">
+            <h3> Powered by TANG</h3>
         </footer>
-        
-   
+
+
 
         <!-- End page content -->
     </div>
