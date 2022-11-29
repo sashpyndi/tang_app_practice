@@ -7,6 +7,8 @@ from flask import render_template
 from flask import request
 from flask import redirect, url_for
 from database import db
+from models import Task as Task
+from models import User as User
 app = Flask(__name__)     # create an app
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_task_app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False
@@ -24,12 +26,16 @@ tasks = {1:{'title': 'Create Task', 'description': 'User has to create task', 's
 @app.route('/index')
 def index():
     a_user = {'name': 'Sashank', 'email': 'spyndi@uncc.edu'}
+    return render_template('index.html', user=a_user)
+@app.route('/dashboard')
+def viewTasks():
+    a_user = {'name': 'Sashank', 'email': 'spyndi@uncc.edu'}
     return render_template('dashboard.html', user=a_user, tasks=tasks)
-@app.route('/index/<task_id>')
+@app.route('/dashboard/<task_id>')
 def viewTask(task_id):
     a_user = {'name': 'Sashank', 'email': 'spyndi@uncc.edu'}
     return render_template('task.html', user=a_user, task=tasks[int(task_id)])
-@app.route('/index/new', methods=['GET', 'POST'])
+@app.route('/dashboard/new', methods=['GET', 'POST'])
 def createTask():
  a_user = {'name': 'Sashank', 'email': 'spyndi@uncc.edu'}
  print('request method is', request.method)
@@ -40,7 +46,7 @@ def createTask():
     my_status = request.form['status']
     id = len(tasks)+1
     tasks[id] = {'title': my_title, 'description': my_description, 'status': my_status}
-    return redirect(url_for('index'))
+    return redirect(url_for('viewTasks'))
  else:
     return render_template('new.html', user=a_user)
 app.run(host=os.getenv('IP', '127.0.0.1'),port=int(os.getenv('PORT', 5000)),debug=True)

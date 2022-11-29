@@ -41,9 +41,9 @@
 
         </div>
         <div class="w3-bar-block">
-            <a href="" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i
+            <a href="{{url_for('index')}}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i
                     class="fa fa-th-large fa-fw w3-margin-right"></i>Home</a>
-            <a href="{{url_for('index')}}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i
+            <a href="{{url_for('viewTasks')}}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i
                     class="fa fa-user fa-fw w3-margin-right"></i>Project Board</a>
             <a href="{{url_for('createTask')}}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i
                     class="fa fa-envelope fa-fw w3-margin-right"></i>Add Task</a>

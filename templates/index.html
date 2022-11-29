@@ -28,20 +28,18 @@
             margin-left: 900px;
             margin-top: -60px;
         }
-    
     </style>
 </head>
 
 <body class="w3-light-grey w3-content" style="max-width:1600px">
+
     <!-- Sidebar/menu -->
     <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
         <div class="w3-container">
 
             <h4><b>TANG</b></h4>
-
         </div>
         <div class="w3-bar-block">
-          
             <a href="{{url_for('index')}}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i
                     class="fa fa-th-large fa-fw w3-margin-right"></i>Home</a>
             <a href="{{url_for('viewTasks')}}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i
@@ -50,15 +48,21 @@
                     class="fa fa-envelope fa-fw w3-margin-right"></i>Add Task</a>
         </div>
     </nav>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+
+
     <!-- !PAGE CONTENT! -->
     <div class="w3-main" style="margin-left:300px">
+
+        <!-- Header -->
         <header id="portfolio">
             <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;"
                     class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
             <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i
                     class="fa fa-bars"></i></span>
             <div class="w3-container">
-                <h1><b>Task View</b></h1>
+                <h1><b>Project Board</b></h1>
             </div>
             <div class="division">
                 <h4>Welcome {{user.name}}</h4>
@@ -68,26 +72,23 @@
         <br>
         <br>
         <main>
-          <div class = "w3-container">
-            <table class = "w3-table">
-              <tr>
-                 <th>Title</th>
-                 <th>Description</th>
-                 <th>Status</th>
-             </tr>
-             <tr>
-                <td>{{task.title}}</td>
-                <td>{{task.description}}</td>
-                <td>{{task.status}}</td>
-             </tr>
-            </table>
-            <button><a href ="{{url_for('viewTasks')}}" >Return to Project Board</a></button>
+           
         </main>
-         <!-- Footer -->
-         <footer id="footer" class="w3-black w3-center w3-padding-24 subdiv">
+        <br><br><br><br><br><br>
+
+
+        <!-- Footer -->
+        <footer id="footer" class="w3-black w3-center w3-padding-24 subdiv">
             <h3> Powered by TANG</h3>
         </footer>
 
 
+
+        <!-- End page content -->
     </div>
+
+
+
 </body>
+
+</html>
