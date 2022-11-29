@@ -43,9 +43,9 @@
         <div class="w3-bar-block">
             <a href="" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i
                     class="fa fa-th-large fa-fw w3-margin-right"></i>Home</a>
-            <a href="" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i
+            <a href="{{url_for('index')}}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i
                     class="fa fa-user fa-fw w3-margin-right"></i>Project Board</a>
-            <a href="" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i
+            <a href="{{url_for('createTask')}}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i
                     class="fa fa-envelope fa-fw w3-margin-right"></i>Add Task</a>
         </div>
     </nav>
@@ -57,7 +57,7 @@
             <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i
                     class="fa fa-bars"></i></span>
             <div class="w3-container">
-                <h1><b>Project Board</b></h1>
+                <h1><b>Create a New Task</b></h1>
             </div>
             <div class="division">
                 <h4>Welcome {{user.name}}</h4>
@@ -67,18 +67,18 @@
         <br>
         <br>
         <main>
-          <form class="w3-container">
+          <form class="w3-container" action ="new" method = "post">
            <label>Title</label> 
-           <input class = "w3-input" type = "text" placeholder = "Enter a title">
+           <input class = "w3-input" type = "text" name = "title" placeholder = "Enter a title">
            <label>Description</label> 
-           <input class = "w3-input" type = "text" placeholder = "Enter your description">
-           <input class="w3-radio" type="radio" name="category" value="backlog">
-           <label>Backlog</label>
-           <input class="w3-radio" type="radio" name="category" value="backlog">
-           <label>Doing</label>
-           <input class="w3-radio" type="radio" name="category" value="done">
-           <label>Done</label>
-           <button>Add Note</button>
+           <p><textarea class = "w3-input" type = "text" name ="description" rows = "6" cols = "0" placeholder="Enter your description"></textarea></p> 
+           <label for = "backlog">Backlog</label>
+           <input class="w3-radio" type="radio"  name="status" value="backlog">
+           <label for = "doing">Doing</label>
+           <input class="w3-radio" type="radio" name="status" value="doing">
+           <label for = "done">Done</label>
+           <input class="w3-radio" type="radio" name="status" value="done">
+           <button type="submit" value="Add Task">Add Task</button>
           </form>
           
         </main>
